@@ -1,0 +1,13 @@
+.form-control {
+	width: 300px;
+	margin-bottom: 15px;
+}
+.winner {
+	text-align: center;
+}
+.star-count {
+
+}
+.repo-name {
+	display: inline-block;
+}
