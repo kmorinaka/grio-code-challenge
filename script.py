@@ -14,4 +14,14 @@ def api_call(user1):
 	r = requests.get(url)
 	list_repos = r.json()
 
-	return list_repos
+	repo_count = len(list_repos)
+	
+	repo_info = [{'name': repo['name'], 'star_count': repo['stargazers_count']} for repo in list_repos]
+
+	star_count = [repo['star_count'] for repo in repo_info]
+	
+	user_info = {'username': username,
+				 'total_repos': repo_count,
+				 'repo_info': repo_info,
+				 'total_stars': sum(star_count)}
+	return user_info
