@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h3>User One</h3>
+	{% for repo in results_one %}
+	<div>Repo Name: {{ repo.name }}</div>
+	<div>Star count: {{ repo.stargazers_count }}</div>
+	{% endfor %}
+	<h3>User Two</h3>
+	{% for repo in results_two %}
+	<div>Repo Name: {{ repo.name }}</div>
+	<div>Star count: {{ repo.stargazers_count }}</div>
+	{% endfor %}
+</body>
+</html>
