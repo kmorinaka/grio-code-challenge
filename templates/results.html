@@ -1,22 +1,42 @@
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h3>{{ results_one.username }}</h3>
-	<div>total repos: {{ results_one.total_repos }}</div>
-	<div>total stars: {{ results_one.total_stars }}</div>
-	{% for repo in results_one.repo_info %}
-	<div>Repo Name: {{ repo.name }}</div>
-	<div>Star count: {{ repo.star_count }}</div>
-	{% endfor %}
-	
-	<h3>{{ results_two.username }}</h3>
-	<div>total repos: {{ results_one.total_repos }}</div>
-	<div>total stars: {{ results_one.total_stars }}</div>
-	{% for repo in results_two.repo_info %}
-	<div>Repo Name: {{ repo.name }}</div>
-	<div>Star count: {{ repo.star_count }}</div>
-	{% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %} Results {% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="winner"><h1>{{ winner }} is the winner!</h1></div>
+		<span class="user1 col-md-6">
+			<div class="user-stats">
+				<h3>{{ results_one.username }}</h3>
+				<div>total repos: {{ results_one.total_repos }}</div>
+				<div>total stars: {{ results_one.total_stars }}</div>
+				<div>average stars/repo: {{ results_one.average }}</div>
+			</div>
+			<div class="">
+			{% for repo in results_one.sort_stars %}
+				{% for i in repo %}
+				<div class="repo-name">{{ repo[i] }}: </div>
+				<div class="star-count">{{ i }}</div>
+				{% endfor %}
+			{% endfor %}
+			</div>
+		</span>
+
+
+		<span class="user2 col-md-6">
+			<div class="user-stats">
+				<h3>{{ results_two.username }}</h3>
+				<div>total repos: {{ results_two.total_repos }}</div>
+				<div>total stars: {{ results_two.total_stars }}</div>
+				<div>average: {{ results_two.average }}</div>
+			</div>
+			<ul>
+				{% for repo in results_two.sort_stars %}
+					{% for i in repo %}
+					<li class="repo-name">{{ repo[i] }}: {{ i }}</li>
+					{% endfor %}
+				{% endfor %}
+			</ul>
+		</span>
+	</div>
+</div>
+{% endblock content %}

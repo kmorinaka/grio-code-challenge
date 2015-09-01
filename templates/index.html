@@ -1,12 +1,13 @@
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}	
+<div class="container-fluid">
+	<h2>Code Star</h2>	
+	<p>Enter two usernames to see who is the winner</p>
 	<form action="/results" method="GET">
-		<input type="text" name="username1">
-		<input type="text" name="username2">
-		<button type="submit"></button>
+		<input class="form-control" type="text" name="username1" placeholder="User One">
+		<input class="form-control" type="text" name="username2" placeholder="User Two">
+		<button class="btn" type="submit">Go!</button>
 	</form>
-</body>
-</html>
+</div>
+{% endblock content %}

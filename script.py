@@ -13,15 +13,16 @@ def api_call(user1):
 	url = api_url + username + '/repos'
 	r = requests.get(url)
 	list_repos = r.json()
-
-	repo_count = len(list_repos)
 	
-	repo_info = [{'name': repo['name'], 'star_count': repo['stargazers_count']} for repo in list_repos]
+	repo_count = len(list_repos)
+	total_stars = sum([repo['stargazers_count'] for repo in list_repos])
+	star_list = sorted([{repo['stargazers_count']: repo['name']} for repo in list_repos], reverse=True)
 
-	star_count = [repo['star_count'] for repo in repo_info]
+	average = float(total_stars)/float(repo_count)
 	
 	user_info = {'username': username,
 				 'total_repos': repo_count,
-				 'repo_info': repo_info,
-				 'total_stars': sum(star_count)}
+				 'total_stars': total_stars,
+				 'sort_stars': star_list,
+				 'average': average}
 	return user_info

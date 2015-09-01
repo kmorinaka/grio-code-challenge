@@ -27,8 +27,13 @@ def show_results():
 	results_one = api_call(user_one)
 	results_two = api_call(user_two)
 
+	if results_one['total_repos'] > results_two['total_repos']:
+		winner = results_one['username']
+	else: 
+		winner = results_two['username']	
+
 	return render_template("results.html", results_one=results_one,
-		results_two=results_two)
+		results_two=results_two, winner=winner)
 
 
 if __name__ == "__main__":
