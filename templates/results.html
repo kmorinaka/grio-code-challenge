@@ -3,15 +3,20 @@
 	<title></title>
 </head>
 <body>
-	<h3>User One</h3>
-	{% for repo in results_one %}
+	<h3>{{ results_one.username }}</h3>
+	<div>total repos: {{ results_one.total_repos }}</div>
+	<div>total stars: {{ results_one.total_stars }}</div>
+	{% for repo in results_one.repo_info %}
 	<div>Repo Name: {{ repo.name }}</div>
-	<div>Star count: {{ repo.stargazers_count }}</div>
+	<div>Star count: {{ repo.star_count }}</div>
 	{% endfor %}
-	<h3>User Two</h3>
-	{% for repo in results_two %}
+	
+	<h3>{{ results_two.username }}</h3>
+	<div>total repos: {{ results_one.total_repos }}</div>
+	<div>total stars: {{ results_one.total_stars }}</div>
+	{% for repo in results_two.repo_info %}
 	<div>Repo Name: {{ repo.name }}</div>
-	<div>Star count: {{ repo.stargazers_count }}</div>
+	<div>Star count: {{ repo.star_count }}</div>
 	{% endfor %}
 </body>
 </html>
