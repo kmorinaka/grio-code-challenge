@@ -27,7 +27,7 @@ def show_results():
 	results_one = api_call(user_one)
 	results_two = api_call(user_two)
 
-	if results_one['total_repos'] > results_two['total_repos']:
+	if results_one['total_stars'] > results_two['total_stars']:
 		winner = results_one['username']
 	else: 
 		winner = results_two['username']	
